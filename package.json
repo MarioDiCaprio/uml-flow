@@ -9,12 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.12.2",
     "@types/node": "18.16.1",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
+    "immer": "^10.0.1",
+    "jquery": "^3.6.4",
+    "mui-color": "^2.0.0-beta.2",
     "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.0.4"
+    "react-icons": "^4.8.0",
+    "react-uuid": "^2.0.0",
+    "reactflow": "^11.7.0",
+    "typescript": "5.0.4",
+    "zustand": "^4.3.7"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.16"
   }
 }
