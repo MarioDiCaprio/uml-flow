@@ -12,7 +12,9 @@ import OneLineInputModal from "@/components/OneLineInputModal/OneLineInputModal"
 const ClassNodeSettings: React.FC<{ id: string }> = ({ id }) => {
     const node = useNodeById<ClassNodeData>(id) as Node<ClassNodeData>;
     const setNodeData = useStore(state => state.setNodeData);
+
     const [isAddingAttribute, setIsAddingAttribute] = useState<boolean>(false);
+    const [isAddingOperation, setIsAddingOperation] = useState<boolean>(false);
 
     function changeName(event: ChangeEvent<HTMLInputElement>) {
         let data = node.data;
@@ -21,9 +23,9 @@ const ClassNodeSettings: React.FC<{ id: string }> = ({ id }) => {
     }
 
     function addAttribute(name: string) {
-        let attributes = node.data.attributes;
-        attributes.push(name);
-        let data = { ...node.data, attributes };
+        let tmp = node.data.attributes;
+        tmp.push(name);
+        let data = { ...node.data, attributes: tmp };
         setNodeData(id, data);
     }
 
@@ -35,6 +37,24 @@ const ClassNodeSettings: React.FC<{ id: string }> = ({ id }) => {
             }
         }
         let data: ClassNodeData = { ...node.data, attributes: tmp };
+        setNodeData(id, data);
+    }
+
+    function addOperation(name: string) {
+        let tmp = node.data.operations;
+        tmp.push(name);
+        let data = { ...node.data, operations: tmp };
+        setNodeData(id, data);
+    }
+
+    function deleteOperation(index: number) {
+        let tmp = [];
+        for (let i=0; i<node.data.operations.length; i++) {
+            if (i !== index) {
+                tmp.push(node.data.operations[i]);
+            }
+        }
+        let data: ClassNodeData = { ...node.data, operations: tmp };
         setNodeData(id, data);
     }
 
@@ -88,6 +108,44 @@ const ClassNodeSettings: React.FC<{ id: string }> = ({ id }) => {
                 open={isAddingAttribute}
                 onClose={() => setIsAddingAttribute(false)}
                 onInput={addAttribute}
+            />
+
+            <Typography color="text.secondary" marginTop="20px" marginBottom="10px">
+                Operations
+            </Typography>
+
+            <TableContainer component={Paper as any}>
+                <StyledTable>
+
+                    <TableBody>
+                        {node.data.operations.map((x, index) => (
+                            <TableRow key={x}>
+                                <TableCell>
+                                    { x }
+                                </TableCell>
+                                <TableCell>
+                                    <IconButton color="error" onClick={() => deleteOperation(index)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+
+                    <caption>
+                        <IconButton color="primary" onClick={() => setIsAddingOperation(true)}>
+                            <AddIcon />
+                        </IconButton>
+                    </caption>
+
+                </StyledTable>
+            </TableContainer>
+
+            <OneLineInputModal
+                title="Add Attribute"
+                open={isAddingOperation}
+                onClose={() => setIsAddingOperation(false)}
+                onInput={addOperation}
             />
 
         </div>
