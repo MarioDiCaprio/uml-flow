@@ -9,6 +9,10 @@ import {NodeDataTypes} from "@/components/_flow/FlowContext/FlowContext";
 
 ////////////////////////////////////////////////////////////////////
 
+/**
+ * These are the initial node settings for when a node is spawned.
+ * @param theme The current MUI theme.
+ */
 function initialNodes(theme: Theme): NodeDataTypes {
     return {
         class: {
@@ -27,12 +31,18 @@ function initialNodes(theme: Theme): NodeDataTypes {
 
 ////////////////////////////////////////////////////////////////////
 
+/**
+ * This component is a React Flow panel that displays several actions to manipulate
+ * nodes.
+ */
 const ControlsPanel: React.FC = () => {
     const theme = useTheme();
     const addNode = useStore(state => state.addNode);
 
     const initial = initialNodes(theme);
 
+    // Triggered when a node is added
+    // TODO Add dialog to chose node type
     function addNodeClicked() {
         addNode({
             id: 'class-' + uuid(),

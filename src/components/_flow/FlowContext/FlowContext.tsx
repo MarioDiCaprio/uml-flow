@@ -10,16 +10,28 @@ import NodeSettingsPanel from "@/components/_flow/panels/NodeSettingsPanel/NodeS
 
 ////////////////////////////////////////////////////////////////////////
 
+/**
+ * This type maps a node type to its corresponding data.
+ */
 export type NodeDataTypes = {
     class: ClassNodeData
 }
 
+/**
+ * This is later used in the main component to declare all node types.
+ * Very important: If node types are added (e.g. for additional UML types),
+ * then this object needs to be updated!
+ */
 const nodeTypes = {
     class: ClassNode
 }
 
 ////////////////////////////////////////////////////////////////////////
 
+/**
+ * This component is the React Flow context for the page. Everything happens inside this
+ * component.
+ */
 const FlowContext: React.FC = () => {
     const store = useStore();
 
