@@ -1,8 +1,8 @@
 import React, {ChangeEvent, useState} from "react";
 import {Node} from "reactflow";
 import useStore from "@/zustand/store";
-import {IconButton, Paper, TableBody, TableCell, TableContainer, TableRow, TextField, Typography} from "@mui/material";
-import {StyledTable} from "./ClassNodeSettings.styles";
+import {IconButton, Paper, TableBody, TableCell, TableContainer, TableRow, Typography} from "@mui/material";
+import {StyledTable, StyledTextField} from "./ClassNodeSettings.styles";
 import {MdDelete as DeleteIcon, MdAddBox as AddIcon} from "react-icons/md";
 import {ClassNodeData} from "@/components/_flow/nodes/ClassNode/ClassNode";
 import {useNodeById} from "@/components/_flow/nodeQueries";
@@ -65,7 +65,7 @@ const ClassNodeSettings: React.FC<{ id: string }> = ({ id }) => {
                 Name
             </Typography>
 
-            <TextField
+            <StyledTextField
                 variant="outlined"
                 fullWidth
                 value={node.data.name}
