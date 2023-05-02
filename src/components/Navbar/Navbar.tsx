@@ -2,6 +2,7 @@ import React from "react";
 import {Context, LinkContent, LinksSection} from "./Navbar.styles";
 import Link from "next/link";
 import {useRouter} from "next/router";
+import Logo from "@/components/Logo/Logo";
 
 const Navbar: React.FC = () => {
     const router = useRouter();
@@ -14,6 +15,7 @@ const Navbar: React.FC = () => {
         <Context>
 
             <LinksSection>
+                <Logo width="40px" />
                 <Link href="/" style={{ textDecoration: 'none' }}>
                     <LinkContent active={isLinkActive('/')}>
                         Home

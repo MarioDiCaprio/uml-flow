@@ -5,6 +5,7 @@ export const Context = styled('div')`
   height: 60px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   background: ${props => alpha(props.theme.palette.background.default, 0.2)};
   backdrop-filter: blur(10px);
   border-bottom: 1px solid ${props => props.theme.palette.border};
